@@ -12,7 +12,3 @@ WHITE = (255, 255, 255)
 clock = pygame.time.Clock()
 FPS = 60
 
-def main():
-    running = True
-    while running:
-        clock.tick()

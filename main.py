@@ -1,5 +1,6 @@
 import pygame 
 import sys 
+import random
 
 pygame.init()
 
@@ -11,6 +12,25 @@ pygame.display.set_caption("Thu th■p bao lì xì")
 WHITE = (255, 255, 255)
 clock = pygame.time.Clock()
 FPS = 60
+
+class Player:
+    def __init__(self, x, y, width, height, speed, image_path):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.speed = speed
+        self.image = pygame.image.load(image_path)
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
+
+    def draw(self, surface):
+        surface.blit(self.image, (self.x, self.y))
+
+    def move(self, keys):
+        if keys[pygame.K_LEFT] and self.x > 0:
+            self.x -= self.speed
+        if keys[pygame.K_RIGHT] and self.x < SCREEN_WIDTH - self.width:
+            self.x += self.speed
 
 class Game:
     def __init__(self):
